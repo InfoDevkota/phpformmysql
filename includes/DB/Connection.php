@@ -81,6 +81,8 @@ class Connection
     public function setHost($host)
     {
         $this->host = $host;
+
+        return $this;
     }
 
     /**
@@ -101,6 +103,8 @@ class Connection
     public function setUser($user)
     {
         $this->user = $user;
+
+        return $this;
     }
 
     /**
@@ -111,6 +115,8 @@ class Connection
     public function setPass($pass)
     {
         $this->pass = $pass;
+
+        return $this;
     }
 
     /**
@@ -131,6 +137,8 @@ class Connection
     public function setDbname($dbname)
     {
         $this->dbname = $dbname;
+
+        return $this;
     }
 
     /**
