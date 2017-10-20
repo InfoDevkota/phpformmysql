@@ -45,8 +45,7 @@ class Connection
         $host = '',
         $user = '',
         $pass = '',
-        $dbname = '',
-        $connect = true
+        $dbname = ''
     )
     {
         $this->host     = $host;
@@ -54,7 +53,12 @@ class Connection
         $this->pass     = $pass;
         $this->dbname   = $dbname;
 
-        if ($connect) {
+        if (
+            $host != '' &&
+            $user != '' &&
+            $pass != '' &&
+            $dbname != ''
+        ) {
             $this->connect();
         }
     }
