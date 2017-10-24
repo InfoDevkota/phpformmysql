@@ -30,7 +30,7 @@ class Connection
     /**
      * @var PDO
      */
-    private $connection;
+    protected $connection;
 
     /**
      * Connection constructor.
@@ -171,5 +171,9 @@ class Connection
     public function query($sql)
     {
         return $this->connection->query($sql);
+    }
+
+    public function getDB(){
+        return $this->connection;
     }
 }
