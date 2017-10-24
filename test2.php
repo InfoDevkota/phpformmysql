@@ -1,17 +1,27 @@
 <?php
 
-include "./connect.php";
+include_once("./connect.php");
+include_once("./objects/Info.php");
 
-$name = $_POST['name'];
-$email = $_POST["email"];
+if(@$_POST){
 
-try {
-    $sql = "INSERT INTO info(name, email) VALUES ('$name', '$email')";
+    $Info = new Info($conn->getDB());
 
-    $conn->query($sql);
+    $name = $_POST['name'];
+    $email = $_POST["email"];
 
-    echo "Record inserted. Name: $name | Email: $email";
-    
-} catch (PDOException $e) {
-    die($e->getMessage());
+    $check_email = $Info->isEmailAvailable($email);
+    if($check_email === true){
+        $Info->name = $name;
+        $Info->email = $email;
+        $save = $Info->save();
+
+        if($save){
+            echo "Record inserted. Name: $name | Email: $email";
+        }else{
+            echo "Errr while add record data info";
+        }
+    }else{
+        echo "Email that you inserted before, already exist, try with another else!";
+    }
 }
